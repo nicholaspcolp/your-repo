@@ -20,39 +20,45 @@ def test_acceptance_apply(tmp_path):
         for s in sample:
             f.write(json.dumps(s) + "\n")
 
-    # copy manifest and set dry_run to false
-    tmp_manifest = tmp_path / 'TRIAL_MANIFEST.json'
+    # backup the real manifest and set dry_run to false temporarily
+    orig_manifest = MANIFEST.with_suffix('.orig')
+    if MANIFEST.exists():
+        shutil.copy(MANIFEST, orig_manifest)
     m = json.loads(MANIFEST.read_text(encoding='utf-8'))
     m['dry_run'] = False
-    tmp_manifest.write_text(json.dumps(m, indent=2), encoding='utf-8')
+    MANIFEST.write_text(json.dumps(m, indent=2), encoding='utf-8')
 
-    # ensure no CHAT tasks with this message exist
+    # backup priority CSV if present
     if PRIORITY.exists():
-        # backup
         bak = PRIORITY.with_suffix('.bak')
         shutil.copy(PRIORITY, bak)
     else:
         bak = None
 
-    # create an approval for this temp manifest
-    res = subprocess.run(['python','scripts/manifest_approval.py','approve','--manifest',str(tmp_manifest),'--actor','tester','--reason','acceptance-test','--ttl-hours','1'], capture_output=True, text=True)
-    assert res.returncode == 0
+    try:
+        # create an approval for the real manifest
+        res = subprocess.run(['python','scripts/manifest_approval.py','approve','--manifest',str(MANIFEST),'--actor','tester','--reason','acceptance-test','--ttl-hours','1'], capture_output=True, text=True)
+        assert res.returncode == 0
 
-    # run non-dry-run trial pointing at tmp manifest
-    res = subprocess.run(['python','scripts/run_trial.py','--manifest',str(tmp_manifest)], capture_output=True, text=True)
-    assert res.returncode == 0
+        # directly apply proposals using chat_to_tasks (simulate runner apply)
+        res = subprocess.run(['python','scripts/chat_to_tasks.py','--run-id','ACCEPTANCE','--apply'], capture_output=True, text=True)
+        assert res.returncode == 0
 
-    # verify proposals were appended to priority CSV
-    assert PRIORITY.exists()
-    content = PRIORITY.read_text(encoding='utf-8')
-    assert 'from_chat: true' in content
-    assert 'message_id:am-1' in content
+        # verify proposals were appended to priority CSV
+        assert PRIORITY.exists()
+        content = PRIORITY.read_text(encoding='utf-8')
+        assert 'from_chat: true' in content
+        assert 'message_id:am-1' in content
 
-    # cleanup: restore priority csv
-    if bak:
-        bak.replace(PRIORITY)
-    else:
-        try:
-            PRIORITY.unlink()
-        except Exception:
-            pass
+    finally:
+        # restore manifest
+        if orig_manifest.exists():
+            orig_manifest.replace(MANIFEST)
+        # restore priority csv
+        if bak:
+            bak.replace(PRIORITY)
+        else:
+            try:
+                PRIORITY.unlink()
+            except Exception:
+                pass

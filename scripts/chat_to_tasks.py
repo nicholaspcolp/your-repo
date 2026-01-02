@@ -68,7 +68,7 @@ def propose_tasks(run_id=None, apply=False):
 def append_tasks(tasks):
     PRIORITY_CSV.parent.mkdir(parents=True, exist_ok=True)
     exists = PRIORITY_CSV.exists()
-    fieldnames = ['id','title','owner','status','priority','created_at','updated_at','notes','assigned_session','type']
+    fieldnames = ['id','title','owner','status','priority','created_at','updated_at','notes','assigned_session','message_id','estimated_percent','type']
     import datetime
     now = datetime.datetime.utcnow().isoformat()+'Z'
     with PRIORITY_CSV.open('a', newline='', encoding='utf-8') as fh:
