@@ -1,0 +1,543 @@
+{
+  "manifest_version": "0.9",
+  "generated_at": "2026-01-02T18:36:54Z",
+  "notes": "Initial trial manifest amalgamated from active chat windows and workspace todo items. Bumped for PR and CI integration.",
+  "external_operations_path": "C:\\Users\\Tensh\\JARVISBRAINSURGERY(OPERATIONS GOVERNANCE TRIALS)",
+  "tasks": [
+    {
+      "id": "T-001",
+      "title": "Integrate chat logger into agent startup paths",
+      "owner": "assistant",
+      "status": "in-progress",
+      "percent_complete": 0,
+      "provenance": {
+        "agent_id": "assistant",
+        "rolecard_id": null,
+        "applied_rule": null,
+        "agent_version": null,
+        "executor_id": null
+      },
+      "workflow_stage": "foreseeable",
+      "priority": "high",
+      "origin": "user:request",
+      "last_updated": "2026-01-01T00:00:00Z",
+      "notes": "Persist every message to WORK/CHAT/RECENT/RECENT_CHAT_HISTORY.jsonl; ensure session_id and message_id populated."
+    },
+    {
+      "id": "T-002",
+      "title": "window-snapshot T-002",
+      "owner": "jarvis",
+      "status": "in-progress",
+      "percent_complete": 0,
+      "provenance": {
+        "agent_id": "jarvis",
+        "rolecard_id": null,
+        "applied_rule": null,
+        "agent_version": null,
+        "executor_id": null
+      },
+      "workflow_stage": "foreseeable",
+      "priority": "high",
+      "origin": "workspace:rolecards",
+      "last_updated": "2026-01-02T08:11:29.558952+00:00",
+      "notes": "window preflight"
+    },
+    {
+      "id": "T-003",
+      "title": "Implement chat index and active-window tracking",
+      "owner": "assistant",
+      "status": "completed",
+      "percent_complete": 100,
+      "provenance": {
+        "agent_id": "assistant",
+        "rolecard_id": null,
+        "applied_rule": null,
+        "agent_version": null,
+        "executor_id": null
+      },
+      "workflow_stage": "completed",
+      "priority": "high",
+      "origin": "assistant:scripts/chat_index.py",
+      "last_updated": "2026-01-01T00:00:00Z",
+      "notes": "chat_index.json created; reports active jarvis windows and last message ids."
+    },
+    {
+      "id": "T-004",
+      "title": "Add preflight/postflight self-eval hooks",
+      "owner": "assistant",
+      "status": "in-progress",
+      "percent_complete": 0,
+      "provenance": {
+        "agent_id": "assistant",
+        "rolecard_id": null,
+        "applied_rule": null,
+        "agent_version": null,
+        "executor_id": null
+      },
+      "workflow_stage": "foreseeable",
+      "priority": "high",
+      "origin": "user:priority_spec",
+      "last_updated": "2026-01-01T00:00:00Z",
+      "notes": "Create pre/post messages to record start/end of operations and populate JARVIS_SELF_EVAL entries."
+    },
+    {
+      "id": "T-005",
+      "title": "Retention & rotation for chat logs",
+      "owner": "assistant",
+      "status": "todo",
+      "percent_complete": 0,
+      "provenance": {
+        "agent_id": "assistant",
+        "rolecard_id": null,
+        "applied_rule": null,
+        "agent_version": null,
+        "executor_id": null
+      },
+      "workflow_stage": "foreseeable",
+      "priority": "medium",
+      "origin": "user:policy",
+      "last_updated": "2026-01-01T00:00:00Z",
+      "notes": "Default retention 90 days; archive to WORK/CHAT/ARCHIVE/; implement monthly rotation."
+    },
+    {
+      "id": "T-006",
+      "title": "window-snapshot T-006",
+      "owner": "jarvis",
+      "status": "in-progress",
+      "workflow_stage": "foreseeable",
+      "percent_complete": 10,
+      "provenance": {
+        "agent_id": "jarvis",
+        "rolecard_id": null,
+        "applied_rule": null,
+        "agent_version": null,
+        "executor_id": null
+      },
+      "priority": "high",
+      "origin": "assistant:assign_task_to_window",
+      "last_updated": "2026-01-02T08:47:45.875832+00:00",
+      "notes": "started work on analyze_pdf_text.py; assigned to win-2 via assign_task_to_window; preflight/progress markers written; lock acquired for analyze_pdf_text.py",
+      "changelog_ref": "WORK/JARVIS_BRAIN_OPERATIONS/CHANGELOG.md",
+      "target_file": "analyze_pdf_text.py"
+    },
+    {
+      "id": "T-007",
+      "title": "Consolidate Jarvis window communication & file path alignment",
+      "owner": "assistant",
+      "status": "in-progress",
+      "percent_complete": 0,
+      "provenance": {
+        "agent_id": "assistant",
+        "rolecard_id": null,
+        "applied_rule": null,
+        "agent_version": null,
+        "executor_id": null
+      },
+      "workflow_stage": "foreseeable",
+      "priority": "high",
+      "origin": "user:request",
+      "last_updated": "2026-01-02T10:15:00.000000+00:00",
+      "notes": "Create persistent inter-window communications log, align file save paths across windows to WORK/JARVIS_BRAIN_OPERATIONS/ and update templates. Communication message 'MEssage sent' appended to WINDOW_COMMUNICATIONS.jsonl.",
+      "target_paths": [
+        "WORK/JARVIS_BRAIN_OPERATIONS/",
+        "WORK/CHAT/",
+        "PROPOSED/"
+      ]
+    },
+    {
+      "id": "T-008",
+      "title": "Inventory nested tasks across workspace and align manifest",
+      "owner": "assistant",
+      "status": "in-progress",
+      "percent_complete": 0,
+      "provenance": {
+        "agent_id": "assistant",
+        "rolecard_id": null,
+        "applied_rule": null,
+        "agent_version": null,
+        "executor_id": null
+      },
+      "workflow_stage": "foreseeable",
+      "priority": "critical",
+      "origin": "user:request",
+      "last_updated": "2026-01-02T10:15:00.000000+00:00",
+      "notes": "Scan workspace (C:\\) for task-like entries, window manifests, and progress markers; enumerate complete/planned/unstarted tasks and annotate TRIAL_MANIFEST.json with findings.",
+      "scan_root": "C:\\Users\\Tensh\\Downloads\\AI Studio"
+    },
+    {
+      "id": "T-009",
+      "title": "Break user inputs into actionable task notes and prioritize",
+      "owner": "assistant",
+      "status": "in-progress",
+      "percent_complete": 0,
+      "provenance": {
+        "agent_id": "assistant",
+        "rolecard_id": null,
+        "applied_rule": null,
+        "agent_version": null,
+        "executor_id": null
+      },
+      "workflow_stage": "foreseeable",
+      "priority": "critical",
+      "origin": "user:request",
+      "last_updated": "2026-01-02T10:15:00.000000+00:00",
+      "notes": "Convert recent user directives and governance statements into discrete tasks, add to manifest, and order by dynamic priority rules."
+    },
+    {
+      "id": "T-SMOKE",
+      "title": "window-snapshot T-SMOKE",
+      "owner": "jarvis",
+      "status": "in-progress",
+      "percent_complete": 0,
+      "provenance": {
+        "agent_id": "jarvis",
+        "rolecard_id": "rc-test",
+        "applied_rule": null,
+        "agent_version": null,
+        "executor_id": null
+      },
+      "workflow_stage": "foreseeable",
+      "last_updated": "2026-01-02T10:11:24.203960+00:00",
+      "notes": "smoke for notes_log"
+    }
+  ],
+  "planned_tasks_section": {
+    "description": "Template for planned tasks entries; used to guide task splitting and assignment across agents.",
+    "template": {
+      "id": "T-XXX",
+      "title": "<brief title>",
+      "owner": "<assistant|jarvis|user>",
+      "status": "todo|in-progress|completed",
+      "priority": "low|medium|high|critical",
+      "origin": "<source>",
+      "planned_steps": [
+        "step1",
+        "step2"
+      ],
+      "expected_duration_hours": 0,
+      "dependencies": [],
+      "notes": "<freeform>"
+    }
+  },
+  "planning_start_point": "foreseeable_workflow",
+  "foreseeable_workflow": {
+    "description": "Primary planning category for near-term, actionable tasks. All new tasks should enter planning here and remain until moved to 'in-progress' or explicitly 'abandoned'.",
+    "initial_stage": "foreseeable",
+    "stages": [
+      "foreseeable",
+      "ready",
+      "in-progress",
+      "blocked",
+      "completed",
+      "abandoned"
+    ],
+    "exit_conditions": {
+      "abandoned": "Task explicitly marked 'abandoned' by agent or human; archived to WORK/JARVIS_BRAIN_OPERATIONS/ARCHIVE/ and removed from active dynamic lists.",
+      "in-progress": "Task accepted by an agent window after preflight marker and lock acquisition; must emit a postflight marker on completion or a progress marker while ongoing."
+    },
+    "planning_rules": "Planning must begin by enumerating tasks in 'foreseeable' stage. Agents must attach required manifest fields (see mandatory_procedures) before mutating workspace files. Tasks leave this workflow only when moved to 'in-progress' or 'abandoned'.",
+    "required_outputs": {
+      "preflight_marker": "WORK/JARVIS_BRAIN_OPERATIONS/PROGRESS/preflight_<task_id>_<agent_id>_<ts>.json",
+      "postflight_marker": "WORK/JARVIS_BRAIN_OPERATIONS/PROGRESS/postflight_<task_id>_<agent_id>_<ts>.json",
+      "window_manifest_snapshot": "WORK/JARVIS_BRAIN_OPERATIONS/WINDOW_MANIFESTS/<window_id>.json",
+      "progress_stats_update": "WORK/JARVIS_BRAIN_OPERATIONS/PROGRESS_STATS.json"
+    }
+  },
+  "task_progress_section": {
+    "description": "Standardized per-task progress entries and required fields for provenance and defection handling.",
+    "progress_template": {
+      "task_id": "T-XXX",
+      "owner": "<agent>",
+      "status": "in-progress",
+      "percent_complete": 0,
+      "last_updated": "<iso-timestamp>",
+      "defection_flag": false,
+      "defection_details": "<if any>",
+      "notes": "<progress note>",
+      "provenance": {
+        "agent_id": "<id>",
+        "rolecard_id": "<id>",
+        "applied_rule": "<priority-rule>",
+        "agent_version": "<optional>",
+        "executor_id": "<optional>"
+      },
+      "progress_summary": "<short 1-2 line summary>",
+      "docs_ref": "<optional PROPOSED doc path>",
+      "manifest_ref": "WORK/JARVIS_BRAIN_OPERATIONS/TRIAL_MANIFEST.json"
+    }
+  },
+  "last_indexed_at": "2026-01-02T06:56:48.863899+00:00",
+  "agent_activity": {
+    "user": {
+      "last_message_id": "6b3bf02e-6676-4e9a-a0b1-1960145f7664",
+      "last_timestamp": "2026-01-02T06:21:04.658024+00:00",
+      "message_count": 2,
+      "session_ids": []
+    },
+    "jarvis": {
+      "last_message_id": "322a3993-9e70-4e1e-b77e-00a5d36b7d14",
+      "last_timestamp": "2026-01-02T06:21:04.661237+00:00",
+      "message_count": 2,
+      "session_ids": []
+    }
+  },
+  "dynamic_window_tracking": {
+    "enabled": true,
+    "description": "Dynamic list of active agent windows/sessions is computed at runtime. Do not store active windows statically here; see PROGRESS or logs for live tracking.",
+    "lock_table": "GOV/jarvis/locks.csv",
+    "note": "Use runtime APIs to query active windows and to acquire per-file locks before starting operations that mutate files."
+  },
+  "mandatory_procedures": {
+    "description": "Procedures that must be executed by any agent (assistant or jarvis) before performing workspace-modifying actions.",
+    "preflight": {
+      "required_fields": [
+        "task_id",
+        "agent_id",
+        "rolecard_id",
+        "timestamp",
+        "intent_summary",
+        "manifest_ref"
+      ],
+      "action": "Write a preflight marker file to WORK/JARVIS_BRAIN_OPERATIONS/PROGRESS/ named preflight_<task_id>_<agent_id>_<ts>.json"
+    },
+    "postflight": {
+      "required_fields": [
+        "task_id",
+        "agent_id",
+        "rolecard_id",
+        "timestamp",
+        "outcome_summary",
+        "defection_flag",
+        "manifest_ref"
+      ],
+      "action": "Write a postflight marker and a final progress entry referencing the task_id"
+    }
+  },
+  "dynamic_priority_list": [
+    {
+      "rank": 1,
+      "reason": "window-snapshot T-002",
+      "task_filter": [
+        "T-002"
+      ],
+      "action": "window preflight"
+    },
+    {
+      "rank": 2,
+      "reason": "Integrate chat logger into agent startup paths",
+      "task_filter": [
+        "T-001"
+      ],
+      "action": "Persist every message to WORK/CHAT/RECENT/RECENT_CHAT_HISTORY.jsonl; ensure session_id and message_id populated."
+    },
+    {
+      "rank": 3,
+      "reason": "Implement chat index and active-window tracking",
+      "task_filter": [
+        "T-003"
+      ],
+      "action": "chat_index.json created; reports active jarvis windows and last message ids."
+    },
+    {
+      "rank": 4,
+      "reason": "Add preflight/postflight self-eval hooks",
+      "task_filter": [
+        "T-004"
+      ],
+      "action": "Create pre/post messages to record start/end of operations and populate JARVIS_SELF_EVAL entries."
+    },
+    {
+      "rank": 5,
+      "reason": "Retention & rotation for chat logs",
+      "task_filter": [
+        "T-005"
+      ],
+      "action": "Default retention 90 days; archive to WORK/CHAT/ARCHIVE/; implement monthly rotation."
+    }
+  ],
+  "defection_capture": true,
+  "dry_run": true,
+  "max_changes": 0,
+  "approval_gates": [
+    "human_approval_before_manifest_change"
+  ],
+  "artifact_paths": {
+    "chats": "WORK/CHAT/RECENT/RECENT_CHAT_HISTORY.jsonl",
+    "defections": "GOV/JARVIS/defections.csv",
+    "search_runs": "GOV/reconciliation/fix_missing_results/search_runs.csv"
+  },
+  "manifest_instructions": {
+    "addendums": "PROPOSED/JARVIS/manifest_addendums.md",
+    "output_formats": "PROPOSED/JARVIS/MANIFEST_SPECIFIED_USER_OUTPUT_FORMAT.md",
+    "priority_task_list": "WORK/JARVIS_BRAIN_OPERATIONS/priority_tasks.csv",
+    "changelog_ref": "WORK/JARVIS_BRAIN_OPERATIONS/CHANGELOG.md",
+    "templates_ref": "WORK/JARVIS_BRAIN_OPERATIONS/TEMPLATES/",
+    "persistent_questions_ref": "WORK/JARVIS_BRAIN_OPERATIONS/PERSISTENT_QUESTIONS.md",
+    "governance": {
+      "enforcement_policy": "Agents MUST write preflight/postflight markers and per-window manifests. Merges are authoritative and bump manifest versions.",
+      "acceptable_changes": "Minor edits (typo fixes, notes) allowed by agents with preflight; major schema changes require user approval.",
+      "autonomy_rules": "Agents may act autonomously within assigned tasks but must record provenance, rolecard_id, and include docs_ref for long-form outputs."
+    }
+  },
+  "governance_rules_doc": "PROPOSED/JARVIS_PRIORITIES.md",
+  "window_comm_log": "WORK/JARVIS_BRAIN_OPERATIONS/PROGRESS/window_comm_log.csv",
+  "auto_propose_tasks_from_chat": true,
+  "canonical_paths": {
+    "work": "WORK/JARVIS_BRAIN_OPERATIONS/",
+    "progress": "WORK/JARVIS_BRAIN_OPERATIONS/PROGRESS/",
+    "window_manifests": "WORK/JARVIS_BRAIN_OPERATIONS/WINDOW_MANIFESTS/",
+    "chat": "WORK/CHAT/",
+    "proposed": "PROPOSED/"
+  },
+  "save_locations": {
+    "progress_dir": "WORK/JARVIS_BRAIN_OPERATIONS/PROGRESS/",
+    "window_manifests_dir": "WORK/JARVIS_BRAIN_OPERATIONS/WINDOW_MANIFESTS/",
+    "chat_recent": "WORK/CHAT/RECENT/RECENT_CHAT_HISTORY.jsonl",
+    "chat_summaries": "WORK/CHAT/SUMMARIES/",
+    "inventory": "WORK/JARVIS_BRAIN_OPERATIONS/INVENTORY_TASKS.json",
+    "changelog": "WORK/JARVIS_BRAIN_OPERATIONS/CHANGELOG.md",
+    "progress_stats": "WORK/JARVIS_BRAIN_OPERATIONS/PROGRESS_STATS.json",
+    "locks": "WORK/JARVIS_BRAIN_OPERATIONS/LOCKS/",
+    "window_communications": "WORK/JARVIS_BRAIN_OPERATIONS/WINDOW_COMMUNICATIONS.jsonl"
+  },
+  "communication_channel": "WORK/JARVIS_BRAIN_OPERATIONS/WINDOW_COMMUNICATIONS.jsonl",
+  "enforce_percent_in_user_messages": true,
+  "active_jarvis_windows": {
+    "count": 2,
+    "session_ids": [
+      "session:2026-01-02T06:20:24.334310+00:00",
+      "session:2026-01-02T06:21:04.661237+00:00"
+    ]
+  },
+  "last_merged_at": "2026-01-02T10:52:21.233925+00:00",
+  "priority_recalculated_at": "2026-01-02T08:13:37.155167+00:00",
+  "progress_stats": {
+    "generated_at": "2026-01-02T10:52:21.331142+00:00",
+    "tasks": {
+      "T-001": {
+        "owner": "jarvis",
+        "latest_status": "postflight",
+        "percent_complete": 0,
+        "last_updated": "2026-01-02T07:50:59.388821+00:00",
+        "defection_count": 0,
+        "provenance_sample": {
+          "agent_id": "jarvis",
+          "rolecard_id": "rc-trial",
+          "applied_rule": null,
+          "agent_version": null,
+          "executor_id": null
+        },
+        "events_count": 2,
+        "progress_summary": null
+      },
+      "T-002": {
+        "owner": "jarvis",
+        "latest_status": "preflight",
+        "percent_complete": 0,
+        "last_updated": "2026-01-02T08:11:29.557492+00:00",
+        "defection_count": 0,
+        "provenance_sample": {
+          "agent_id": "jarvis",
+          "rolecard_id": "rc-trial",
+          "applied_rule": null,
+          "agent_version": null,
+          "executor_id": null
+        },
+        "events_count": 1,
+        "progress_summary": null
+      },
+      "T-006": {
+        "owner": "jarvis",
+        "latest_status": "in-progress",
+        "percent_complete": 10,
+        "last_updated": "2026-01-02T10:04:36.680028+00:00",
+        "defection_count": 0,
+        "provenance_sample": {
+          "agent_id": "jarvis",
+          "rolecard_id": "rc-trial",
+          "applied_rule": null,
+          "agent_version": null,
+          "executor_id": null
+        },
+        "events_count": 3,
+        "progress_summary": "continued work on analyze_pdf_text.py; extracted pages"
+      },
+      "T-SMOKE": {
+        "owner": "jarvis",
+        "latest_status": "preflight",
+        "percent_complete": 0,
+        "last_updated": "2026-01-02T10:11:24.203274+00:00",
+        "defection_count": 0,
+        "provenance_sample": {
+          "agent_id": "jarvis",
+          "rolecard_id": "rc-test",
+          "applied_rule": null,
+          "agent_version": null,
+          "executor_id": null
+        },
+        "events_count": 1,
+        "progress_summary": null
+      }
+    }
+  },
+  "progress_stats_updated_at": "2026-01-02T10:52:21.332476+00:00",
+  "latest_progress_report": "WORK/JARVIS_BRAIN_OPERATIONS/PROGRESS_REPORTS/progress_report_20260102T025306Z.json",
+  "progress_reports_count": 1,
+  "task_tracker": {
+    "description": "Embedded task-tracker for continuous task state and provenance. Mirrors key fields from tasks and maintains event history.",
+    "tracker_ref": "WORK/JARVIS_BRAIN_OPERATIONS/INVENTORY_TASKS.json",
+    "continuous_update": true,
+    "update_triggers": [
+      "preflight_written",
+      "progress_written",
+      "postflight_written",
+      "window_manifest_update",
+      "manual_reconciliation"
+    ],
+    "output_reports_dir": "WORK/JARVIS_BRAIN_OPERATIONS/PROGRESS_REPORTS/",
+    "required_fields": [
+      "id",
+      "owner",
+      "status",
+      "percent_complete",
+      "last_updated",
+      "provenance",
+      "workflow_stage"
+    ]
+  },
+  "self_evaluations": {
+    "description": "Self-evaluation records to be emitted by agents at postflight for accountability and continuous improvement.",
+    "template_ref": "WORK/JARVIS_BRAIN_OPERATIONS/TEMPLATES/SELF_EVALUATION_TEMPLATE.json",
+    "required": true,
+    "required_after": "postflight",
+    "fields": [
+      "task_id",
+      "agent_id",
+      "rolecard_id",
+      "timestamp",
+      "confidence_score",
+      "summary_of_work",
+      "lessons_learned",
+      "suggested_next_steps",
+      "manifest_ref"
+    ],
+    "storage": "WORK/JARVIS_BRAIN_OPERATIONS/SELF_EVALS/"
+  },
+  "progress_report_formats": {
+    "canonical_json_report": "WORK/JARVIS_BRAIN_OPERATIONS/PROGRESS_REPORTS/progress_report_<generated_at>.json",
+    "human_readable": "WORK/JARVIS_BRAIN_OPERATIONS/PROGRESS_REPORTS/progress_report_<generated_at>.md",
+    "stats_ref": "WORK/JARVIS_BRAIN_OPERATIONS/PROGRESS_STATS.json",
+    "generation_command": "scripts/progress_stats.py --emit-report"
+  },
+  "inventory_ref": "WORK/JARVIS_BRAIN_OPERATIONS/INVENTORY_TASKS.json",
+  "inventory_summary": {
+    "generated_at": "2026-01-02T10:12:21.553592Z",
+    "task_count": 15,
+    "counts": {
+      "in_progress": 6,
+      "completed": 1,
+      "todo": 8
+    }
+  },
+  "last_inventory_at": "2026-01-02T10:12:21.553592Z"
+}
