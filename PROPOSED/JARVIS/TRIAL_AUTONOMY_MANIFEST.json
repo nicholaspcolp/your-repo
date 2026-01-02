@@ -1,0 +1,15 @@
+{
+  "name": "TRIAL_AUTONOMY_MANIFEST",
+  "version": "0.1.0",
+  "description": "Configuration for autonomy trial runs under JARVIS. This is a proposed template.",
+  "dry_run": true,
+  "max_changes": 0,
+  "whitelist_folders": ["GOV/reconciliation","GOV/JARVIS"],
+  "approval_gates": ["human_approval_before_manifest_change"],
+  "defection_capture": true,
+  "artifact_paths": {
+    "chats": "GOV/JARVIS/chats",
+    "defections": "GOV/JARVIS/defections.csv",
+    "search_runs": "GOV/reconciliation/fix_missing_results/search_runs.csv"
+  }
+}

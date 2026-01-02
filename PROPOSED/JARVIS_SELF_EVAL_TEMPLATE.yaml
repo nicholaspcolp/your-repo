@@ -1,0 +1,39 @@
+# JARVIS Self-Evaluation / Performance Report Template
+# Machine-readable template for opening/closing reports and per-run assessments
+
+report_id: "JPR-0000"
+report_phase: "opening" # opening | closing
+task_id: "T-0000"
+agent_id: "jarvis-1"
+rolecard_id: "rolecard_jarvis"
+start_time: "2026-01-01T00:00:00Z"
+end_time: null
+last_unrecorded_message_id_open: ""
+last_unrecorded_message_id_close: ""
+chat_path: "WORK/CHAT/RECENT/RECENT_CHAT_HISTORY.jsonl"
+applied_priority_rules:
+  - "DOCUMENTATION:1.0"
+  - "USER_REQUESTS:2"
+
+planned_tasks:
+  - task_instance_id: "T-0000.1"
+    title: "normalize rolecards"
+    planned_percent_this_run: 40
+    estimated_time_minutes: 30
+
+task_results: []
+
+summary_metrics:
+  tasks_started: 0
+  tasks_completed: 0
+  percent_overall_complete: 0
+  time_spent_seconds: 0
+  errors_encountered: []
+  provenance_entries_added: 0
+
+notes: |
+  - "Record any relevant research findings, references, and next-step requests here."
+
+next_steps: []
+
+# End of template

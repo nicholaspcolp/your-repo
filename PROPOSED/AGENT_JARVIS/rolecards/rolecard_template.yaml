@@ -1,0 +1,68 @@
+# PFMC Best Practice Agent Rolecard Template
+
+This template is designed for standardizing agent rolecards in the PFMC filespace, based on JARVIS rolecard conventions and best practices for agent governance, provenance, and safe operation.
+
+---
+
+## rolecard_<agent_name>.yaml
+
+```yaml
+rolecard_version: 1.0
+agent_id: <AGENT_ID>
+agent_name: <AGENT_NAME>
+description: <Short description of agent purpose and scope>
+owner: <Team or individual responsible>
+status: [inprogress-functional | inprogress-nonfunctional | complete | deprecated]
+last_updated: <YYYY-MM-DD>
+
+# Capabilities and Permissions
+tasks:
+  - name: <Task name>
+    description: <What this task does>
+    permissions:
+      - <permission_1>
+      - <permission_2>
+    linked_policies:
+      - <policy_doc_1>
+      - <policy_doc_2>
+
+# Policy and Compliance
+policies:
+  - name: <Policy name>
+    description: <Policy description>
+    compliance_status: [incomplete | partial | compliant]
+    last_reviewed: <YYYY-MM-DD>
+
+# Metadata and Provenance
+metadata:
+  created_by: <creator>
+  created_on: <YYYY-MM-DD>
+  tags:
+    - <tag_1>
+    - <tag_2>
+  glossary_refs:
+    - <term_1>
+    - <term_2>
+
+# Testing and Validation
+tests:
+  - name: <Test name>
+    description: <Test description>
+    status: [not_tested | pass | fail | needs_review]
+    last_run: <YYYY-MM-DD>
+
+# Notes and Future Work
+notes: |
+  <Freeform notes, TODOs, or areas for future development>
+
+# Incomplete Fields
+incomplete_fields:
+  - <field_name>
+  - <field_name>
+```
+
+---
+
+> Save this template as `rolecard_<agent_name>.yaml` in the PFMC filespace (e.g., `PROPOSED/AGENT_JARVIS/rolecards/`).
+> Mark any incomplete or inprogress fields for future review and continuous improvement.
+> Reference this template in the PFMC manifest and agent registry for standardization.
