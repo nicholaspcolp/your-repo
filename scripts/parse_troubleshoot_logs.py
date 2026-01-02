@@ -27,11 +27,15 @@ def parse_and_suggest():
     data = json.loads(latest.read_text(encoding='utf-8'))
     findings = data.get('findings', [])
     suggestions = []
+    from scripts.task_api import create_task_draft
     for f in findings:
         if f.get('step') == 'token' and f.get('status') in ('fail','error'):
             suggestions.append({'title':'Rotate or fix PAT','severity':'high','reason':f.get('text') or f.get('error')})
+            # also create a task draft
+            create_task_draft('Rotate PAT for runner', f"Token auth failed: {f.get('text') or f.get('error')}", owner='tensh', severity='high', lifecycle_status='prelim-planning', requester_type='anyjarvis')
         if f.get('step') == 'repo' and f.get('status') == 'fail':
             suggestions.append({'title':'Grant repo access to token','severity':'medium','reason':f.get('text')})
+            create_task_draft('Grant repo access to token', f"Repo access check failed: {f.get('text')}", owner='tensh', severity='medium', lifecycle_status='prelim-planning', requester_type='anyjarvis')
     out = {'generated_at': datetime.utcnow().isoformat()+'Z','source': str(latest),'suggestions': suggestions}
     outp = LOG_DIR / f'followups_{now_ts()}.json'
     outp.write_text(json.dumps(out, indent=2))
